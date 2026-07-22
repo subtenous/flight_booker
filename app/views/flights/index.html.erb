@@ -5,8 +5,10 @@
     <%= f.select :arrival_airport_id, @airport_options %>
 
     <%= f.select :passengers, (1..4) %>
-    
+
     <%= f.date_field :date %>
 
     <%= f.submit "Search" %>
+
+    <%= @flights.inspect if @flights %>
 <% end %>
