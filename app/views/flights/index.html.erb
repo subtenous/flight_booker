@@ -1,2 +1,12 @@
 <h1>Search Flights</h1>
 
+<%= form_with url: flights_path, method: :get do |f| %>
+    <%= f.select :departure_airport_id, @airport_options %>
+    <%= f.select :arrival_airport_id, @airport_options %>
+
+    <%= f.select :passengers, (1..4) %>
+    
+    <%= f.date_field :date %>
+
+    <%= f.submit "Search" %>
+<% end %>
