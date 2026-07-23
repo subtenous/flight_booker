@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :flights, only: [ :index ]
+  resources :flights
+  resources :bookings
 
   get "up" => "rails/health#show", as: :rails_health_check
 

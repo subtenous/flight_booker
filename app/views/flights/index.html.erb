@@ -10,5 +10,20 @@
 
     <%= f.submit "Search" %>
 
-    <%= @flights.inspect if @flights %>
+<% end %>
+
+<% if @flights.present?%>
+    <%= form_with url: new_booking_path, method: :get do |f| %>
+
+        <% @flights.each do |flight| %>
+            <%= flight.departure_airport.code %>
+            <%= flight.arrival_airport.code %>
+            <%= flight.start_datetime %>
+            <%= flight.duration %>
+            <%= radio_button_tag :flight_id, flight.id %>
+        <% end %>
+
+        <%= f.hidden_field :passengers, value: params[:passengers] %>
+        <%= f.submit "Select" %>
+    <% end %>
 <% end %>

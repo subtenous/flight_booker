@@ -9,9 +9,5 @@ class FlightsController < ApplicationController
 
       @flights = Flight.where(start_datetime: selected_date.all_day)
     end
-
-
-
-
   end
 end
