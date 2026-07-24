@@ -1,21 +1,21 @@
 class BookingsController < ApplicationController
-  def show 
+  def show
     @booking = Booking.find(params[:id])
   end
-  
-  def new 
+
+  def new
     @flight = Flight.find(params[:flight_id])
-    @booking = @flight.bookings.build 
+    @booking = @flight.bookings.build
 
     params[:passengers].to_i.times do
-      @booking.passengers.build 
+      @booking.passengers.build
     end
   end
 
-  def create 
+  def create
     @booking = Booking.new(booking_params)
 
-    if @booking.save 
+    if @booking.save
       redirect_to @booking
     else
       @flight = @booking.flight
@@ -26,6 +26,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.expect(booking: [:flight_id, passengers_attributes: [[:name, :email]]])
+    params.expect(booking: [ :flight_id, passengers_attributes: [ [ :name, :email ] ] ])
   end
 end
