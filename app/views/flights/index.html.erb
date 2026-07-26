@@ -1,16 +1,33 @@
 <h1>Search Flights</h1>
 
-<%= form_with url: flights_path, method: :get do |f| %>
-    <%= f.select :departure_airport_id, @airport_options %>
-    <%= f.select :arrival_airport_id, @airport_options %>
+<section class="search-section">
+    <%= form_with url: flights_path, method: :get, class: "search-form" do |f| %>
+        <div class="form-group">
+            <%= f.label :departure_airport_id, "Departure Airport:", class: "form-label" %>
+            <%= f.select :departure_airport_id, @airport_options, {}, class: "form-control" %>
+        </div>
 
-    <%= f.select :passengers, (1..4) %>
+        <div class="form-group">
+            <%= f.label :arrival_airport_id, "Arrival Airport:", class: "form-label" %>
+            <%= f.select :arrival_airport_id, @airport_options, {}, class: "form-control" %>
+        </div>
 
-    <%= f.date_field :date %>
+        <div class="form-group">
+            <%= f.label :passengers, "Number of Passengers:", class: "form-label" %>
+            <%= f.select :passengers, (1..4), {}, class: "form-control" %>
+        </div>
 
-    <%= f.submit "Search" %>
+        <div class="form-group">
+            <%= f.label :date, "Date of Flight:", class: "form-label" %>
+            <%= f.date_field :date, class: "form-control" %>
+        </div>
 
-<% end %>
+        <div class="form-group">
+            <%= f.submit "Search", class: "search-button" %>
+        </div>
+
+    <% end %>
+</section>
 
 <% if @flights.present?%>
     <%= form_with url: new_booking_path, method: :get do |f| %>
