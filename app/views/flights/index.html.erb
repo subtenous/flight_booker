@@ -1,46 +1,67 @@
 <h1>Search Flights</h1>
 
 <section class="search-section">
-    <%= form_with url: flights_path, method: :get, class: "search-form" do |f| %>
-        <div class="form-group">
-            <%= f.label :departure_airport_id, "Departure Airport:", class: "form-label" %>
-            <%= f.select :departure_airport_id, @airport_options, {}, class: "form-control" %>
-        </div>
+  <%= form_with url: flights_path, method: :get, class: "search-form" do |f| %>
+    <div class="form-group">
+      <%= f.label :departure_airport_id, "Departure Airport:", class: "form-label" %>
+      <%= f.select :departure_airport_id, @airport_options, {}, class: "form-control" %>
+    </div>
 
-        <div class="form-group">
-            <%= f.label :arrival_airport_id, "Arrival Airport:", class: "form-label" %>
-            <%= f.select :arrival_airport_id, @airport_options, {}, class: "form-control" %>
-        </div>
+    <div class="form-group">
+      <%= f.label :arrival_airport_id, "Arrival Airport:", class: "form-label" %>
+      <%= f.select :arrival_airport_id, @airport_options, {}, class: "form-control" %>
+    </div>
 
-        <div class="form-group">
-            <%= f.label :passengers, "Number of Passengers:", class: "form-label" %>
-            <%= f.select :passengers, (1..4), {}, class: "form-control" %>
-        </div>
+  	<div class="form-group">
+      <%= f.label :passengers, "Number of Passengers:", class: "form-label" %>
+      <%= f.select :passengers, (1..4), {}, class: "form-control" %>
+  	</div>
 
-        <div class="form-group">
-            <%= f.label :date, "Date of Flight:", class: "form-label" %>
-            <%= f.select :date, @date_options, {prompt: "Choose a date", selected: params[:date]}, class: "form-control" %>
-        </div>
+    <div class="form-group">
+      <%= f.label :date, "Date of Flight:", class: "form-label" %>
+      <%= f.select :date, @date_options, {prompt: "Choose a date", selected: params[:date]}, class: "form-control" %>
+  	</div>
 
-        <div class="form-group">
-            <%= f.submit "Search", class: "search-button" %>
-        </div>
+    <div class="form-group">
+      <%= f.submit "Search", class: "search-button" %>
+    </div>
 
-    <% end %>
+  <% end %>
 </section>
 
-<% if @flights.present?%>
-    <%= form_with url: new_booking_path, method: :get do |f| %>
+<% if @flights.present? %>
+  <section class="results-section">
+    <h2>Available Flights</h2>
 
+    <%= form_with url: new_booking_path, method: :get, class: "results-form" do |f| %>
+
+      <div class="flight-list">
         <% @flights.each do |flight| %>
-            <%= flight.departure_airport.code %>
-            <%= flight.arrival_airport.code %>
-            <%= flight.start_datetime %>
-            <%= flight.duration %>
-            <%= radio_button_tag :flight_id, flight.id %>
-        <% end %>
+          <label class="flight-option">
+            <%= radio_button_tag :flight_id, flight.id, false, required: true %>
+						<span class="flight-route">
+            	<%= flight.departure_airport.code %>
+								&rarr;
+            	<%= flight.arrival_airport.code %>
+						</span>
 
-        <%= f.hidden_field :passengers, value: params[:passengers] %>
-        <%= f.submit "Select" %>
+						<span class="flight-time">
+            	<%= flight.start_datetime.strftime("%a, %d %b %Y at %H:%M") %>
+						</span>
+
+						<span class="flight-duration">
+            	<%= flight.duration %> minutes
+						</span>
+					</label>
+                    
+        <% end %>
+    	</div>
+
+      <%= f.hidden_field :passengers, value: params[:passengers] %>
+
+      <div class="results-actions">
+        <%= f.submit "Continue", class: "select-button" %>
+      </div>
     <% end %>
+  </section>
 <% end %>

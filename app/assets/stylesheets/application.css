@@ -76,3 +76,44 @@ body {
 }
 
 /* Flight Results */
+
+.results-section {
+  margin-top: 2rem;
+}
+
+.flight-list {
+  gap: 1rem;
+  display: flex; 
+  flex-direction: column;
+}
+
+.flight-option {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.flight-option:hover {
+  border-color: navy;
+}
+
+.results-actions {
+  margin-top: 1rem;
+}
+
+.select-button { 
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: darkblue;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
