@@ -1,13 +1,6 @@
 <h1>Booking Confirmed</h1>
 
-<div class="flight-summary">
-	<h2>Flight Details</h2>
-	<ul>
-		<li><%= @booking.flight.departure_airport.code %> &rarr; <%= @booking.flight.arrival_airport.code %></li>
-		<li><%= @booking.flight.start_datetime.strftime("%a, %d %b %Y at %H:%M") %></li>
-		<li><%= @booking.flight.duration %> minutes</li>
-	</ul>
-</div>
+<%= render "flight_summary", booking: @booking %>
 
 <section class="passengers-section">
 	<h2>Passengers</h2>

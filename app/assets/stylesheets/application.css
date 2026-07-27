@@ -175,6 +175,10 @@ body {
   border-radius: 10px;
 }
 
+.passenger + .passenger {
+  margin-top: 1rem;
+}
+
 .passenger legend {
   font-weight: bold;
 }
