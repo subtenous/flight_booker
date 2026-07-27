@@ -1,24 +1,49 @@
-# README
+# Flight Booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple flight booking app build with Ruby on Rails as part of The Odin Project.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Search for flights by:
+  - Departure airport
+  - Arrival airport
+  - Flight date
+  - Number of passenger
+- Select an available flight
+- Enter passenger details 
+- Create a booking for multiple passengers
 
-* System dependencies
+## Setup
 
-* Configuration
+Clone the repository:
 
-* Database creation
+```bash
+git clone <repo_url>
+cd flight_booker
+```
 
-* Database initialization
+Install dependencies:
 
-* How to run the test suite
+```bash
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Setup DB:
 
-* Deployment instructions
+```bash
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* ...
+Start the server:
+
+```bash
+rails s
+```
+
+Visit:
+
+```
+http://localhost:3000
+```
