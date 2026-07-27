@@ -142,6 +142,16 @@ body {
   background-color: navy;
 }
 
+/* Results message */
+
+.no-results {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
 /* Error messages */
 
 .error-messages {

@@ -64,4 +64,10 @@
       </div>
     <% end %>
   </section>
+
+  <% elsif @search_executed %>
+  <p class="no-results">
+    No flights could be found for that route and date. Please try another search.
+  </p>
 <% end %>
+
