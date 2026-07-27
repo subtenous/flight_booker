@@ -164,4 +164,3 @@ Flight.create!(
   start_datetime: DateTime.new(2027, 1, 16, 20, 45),
   duration: 55
 )
-
