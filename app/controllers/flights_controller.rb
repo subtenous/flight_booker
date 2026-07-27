@@ -6,14 +6,14 @@ class FlightsController < ApplicationController
 
     @date_options = available_dates.map do |date|
       [date.strftime("%A, %d %B %Y"), date]
-  end
+    end
 
-    if params[:departure_airport_id].present?
+    if params[:departure_airport_id].present? && params[:arrival_airport_id].present? && params[:date].present?
       @flights = Flight.where(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id])
 
       selected_date = Date.parse(params[:date])
 
-      @flights = Flight.where(start_datetime: selected_date.all_day)
+      @flights = @flights.where(start_datetime: selected_date.all_day)
     end
   end
 end
