@@ -20,6 +20,7 @@
 		<li><%= @booking.flight.duration %> minutes</li>
 	</ul>
 </div>
+
 <section class="passenger-form">
 	<%= form_with model: @booking, class: "booking-form" do |f| %>
 		<%= f.hidden_field :flight_id %>
