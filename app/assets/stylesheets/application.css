@@ -56,7 +56,16 @@ body {
   border-radius: 5px;
   box-sizing: border-box;
   font: inherit;
-  cursor: pointer;
+}
+
+.form-control:focus {
+  border-color: navy;
+  outline: 2px solid navy;
+  outline-offset: 2px;
+}
+
+.form-control:hover {
+  border-color: navy;
 }
 
 .search-button { 
@@ -82,8 +91,8 @@ body {
 }
 
 .flight-list {
-  gap: 1rem;
   display: flex; 
+  gap: 1rem;
   flex-direction: column;
 }
 
@@ -117,3 +126,78 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+
+.select-button:hover {
+  background-color: navy;
+}
+
+/* Error messages */
+
+.error-messages {
+  margin-bottom: 1.5rem;
+  background-color: lightcoral;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 1rem;
+
+}
+
+/* Flight summary for booking */
+
+.flight-summary {
+  background-color: white;
+  padding: 1rem; 
+  border: 1px solid lightgray; 
+  border-radius: 10px;
+}
+
+.flight-summary h2,
+.error-messages h2 {
+  margin-top: 0;
+}
+
+.flight-summary ul,
+.error-messages ul {
+  margin-bottom: 0;
+}
+
+/* Booking form */
+
+.passenger-form {
+  margin-top: 2rem;
+}
+
+.passenger {
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid lightgray; 
+  border-radius: 10px;
+}
+
+.passenger + .passenger {
+  margin-top: 1rem;
+}
+
+.passenger legend {
+  font-weight: bold;
+}
+
+.booking-actions {
+  margin-top: 1rem;
+}
+
+.booking-button {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: darkblue;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.booking-button:hover {
+  background-color: navy;
+}
+

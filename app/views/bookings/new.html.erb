@@ -1,7 +1,7 @@
 <h1> New Booking </h1>
 
 <% if @booking.errors.any? %>
-  <div>
+  <div class="error-messages">
     <h2>Please correct the following errors:</h2>
 
     <ul>
@@ -12,21 +12,37 @@
   </div>
 <% end %>
 
-<%= form_with model: @booking do |f| %>
-  <%= f.hidden_field :flight_id %>
+<div class="flight-summary">
+	<h2>Flight Details</h2>
+	<ul>
+		<li><%= @booking.flight.departure_airport.code %> &rarr; <%= @booking.flight.arrival_airport.code %></li>
+		<li><%= @booking.flight.start_datetime.strftime("%a, %d %b %Y at %H:%M") %></li>
+		<li><%= @booking.flight.duration %> minutes</li>
+	</ul>
+</div>
+<section class="passenger-form">
+	<%= form_with model: @booking, class: "booking-form" do |f| %>
+		<%= f.hidden_field :flight_id %>
 
-  <h3>Passenger Details</h3>
-  <%= f.fields_for :passengers do |p_fields| %>
-    <div>
-      <h4>Passenger <%= p_fields.index + 1 %></h4>
-            
-      <%= p_fields.label :name %>
-      <%= p_fields.text_field :name %>
+		<h2>Passenger Details</h2>
+		<%= f.fields_for :passengers do |p_fields| %>
+			<fieldset class="passenger">
+				<legend>Passenger <%= p_fields.index + 1 %></legend>
+							
+				<div class="form-group">
+					<%= p_fields.label :name, class: "form-label" %>
+					<%= p_fields.text_field :name, class: "form-control"%>
+				</div>
 
-      <%= p_fields.label :email %>
-      <%= p_fields.email_field :email %>
-    </div>
-  <% end %>
+				<div class="form-group">
+					<%= p_fields.label :email, class: "form-label" %>
+					<%= p_fields.email_field :email, class: "form-control" %>
+				</div>
+			</fieldset>
+		<% end %>
 
-  <%= f.submit "Book Flight" %>
-<% end %>
+		<div class="booking-actions">
+			<%= f.submit "Book Flight", class: "booking-button" %>
+		</div>
+	<% end %>
+</section>
