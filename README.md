@@ -1,6 +1,6 @@
 # Flight Booker
 
-A simple flight booking app build with Ruby on Rails as part of The Odin Project.
+A simple flight booking app built with Ruby on Rails as part of The Odin Project.
 
 ## Features
 
@@ -8,7 +8,7 @@ A simple flight booking app build with Ruby on Rails as part of The Odin Project
   - Departure airport
   - Arrival airport
   - Flight date
-  - Number of passenger
+  - Number of passengers
 - Select an available flight
 - Enter passenger details 
 - Create a booking for multiple passengers
@@ -18,7 +18,7 @@ A simple flight booking app build with Ruby on Rails as part of The Odin Project
 Clone the repository:
 
 ```bash
-git clone <repo_url>
+git clone https://github.com/subtenous/flight_booker.git
 cd flight_booker
 ```
 
