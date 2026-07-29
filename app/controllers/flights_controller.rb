@@ -9,7 +9,7 @@ class FlightsController < ApplicationController
     end
 
     @search_executed = params[:departure_airport_id].present? && params[:arrival_airport_id].present? && params[:date].present?
-    
+
     if @search_executed
 
       @flights = Flight.where(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id])
@@ -17,7 +17,7 @@ class FlightsController < ApplicationController
       selected_date = Date.parse(params[:date])
 
       @flights = @flights.where(start_datetime: selected_date.all_day)
-      
+
     end
   end
 end
